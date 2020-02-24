@@ -1,13 +1,13 @@
-package com.moviereviews.movieratingservice;
+package com.moviereviews.movieinfoservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class MovieRatingServiceApplication {
+public class MovieInfoServiceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(MovieRatingServiceApplication.class, args);
+		SpringApplication.run(MovieInfoServiceApplication.class, args);
 	}
 
 }

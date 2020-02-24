@@ -2,7 +2,10 @@ package com.moviereviews.movieratingservice.controller;
 
 import java.util.Optional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,11 +19,18 @@ import com.moviereviews.movieratingservice.repo.UserRepository;
 @RestController
 @RequestMapping("/movieratings")
 public class MovieRatingController {
+
+	@Autowired
+	private Environment environment;
+
+	private static final Logger logger = LoggerFactory.getLogger(MovieRatingController.class);
 	@Autowired
 	private UserRepository userRepository;
 
 	@GetMapping("/users/{userId}/ratings")
 	public ResponseEntity<UserRating> getMovieRatings(@PathVariable("userId") String userId) {
+
+		logger.info("current environment >>>>>> " + environment.getProperty("app.env"));
 		Optional<UserRating> ratingsList = userRepository.findById(userId);
 
 		ResponseEntity<UserRating> response = null;

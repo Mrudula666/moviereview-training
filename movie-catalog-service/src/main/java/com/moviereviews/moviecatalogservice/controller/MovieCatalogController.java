@@ -3,7 +3,10 @@ package com.moviereviews.moviecatalogservice.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,6 +27,11 @@ import com.moviereviews.moviecatalogservice.proxy.MovieRatingServiceProxy;
 public class MovieCatalogController {
 
 	@Autowired
+	private Environment environment;
+
+	private static final Logger logger = LoggerFactory.getLogger(MovieCatalogController.class);
+
+	@Autowired
 	private MovieInfoServiceProxy movieInfoServiceProxy;
 
 	@Autowired
@@ -36,6 +44,7 @@ public class MovieCatalogController {
 	@GetMapping("/catalog-feign/{userId}")
 	public ResponseEntity<MovieCatalog> getMovieCatalogUsingFeignClient(@PathVariable("userId") String userId) {
 
+		logger.info("current environment >>> " + environment.getProperty("app.env"));
 		UserRating userRating = movieRatingServiceProxy.getUserRatings(userId).getBody();
 		List<Rating> ratings = userRating.getRatings();
 

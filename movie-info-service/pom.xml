@@ -10,10 +10,10 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.moviereviews</groupId>
-	<artifactId>movie-rating-service</artifactId>
+	<artifactId>movie-info-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>movie-rating-service</name>
-	<description>movie rating service</description>
+	<name>movie-info-service</name>
+	<description>movie info service</description>
 
 	<properties>
 		<java.version>1.8</java.version>
