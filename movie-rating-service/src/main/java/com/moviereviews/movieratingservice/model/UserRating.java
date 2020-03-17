@@ -12,7 +12,6 @@ import lombok.Getter;
 @Getter
 @Document(collection = "userratings")
 public class UserRating {
-
 	@Id
 	private String userId;
 	private List<Rating> ratings;

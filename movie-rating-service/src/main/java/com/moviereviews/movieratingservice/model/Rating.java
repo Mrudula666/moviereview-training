@@ -6,7 +6,6 @@ import lombok.Getter;
 @AllArgsConstructor
 @Getter
 public class Rating {
-
 	private int movieId;
 	private int rating;
 
